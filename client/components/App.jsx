@@ -38,10 +38,9 @@ class App extends React.Component {
   }
   componentDidMount() {
     axios
-      .get('http://127.0.0.1:3049/api/videos')
+      .get('/api/videos')
       .then(
         result => {
-          console.log('🗺', result)
           this.setState({
             isLoaded: true,
             videos: result.data
@@ -56,7 +55,7 @@ class App extends React.Component {
         }
       )
       .then(() => {
-        axios.get('http://127.0.0.1:3049/api/users').then(
+        axios.get('/api/users').then(
           result => {
             this.setState({
               isLoaded: true,
@@ -73,7 +72,7 @@ class App extends React.Component {
         );
       })
       .then(() => {
-        axios.get('http://127.0.0.1:3049/api/games').then(
+        axios.get('/api/games').then(
           result => {
             this.setState({
               isLoaded: true,
