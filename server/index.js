@@ -23,6 +23,7 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}.`);
 });
 
+
 app.get('/', (req, res) => {
   res.status(200);
 });
@@ -89,6 +90,5 @@ app.get('/api/games/', (req, res) => {
       res.status(200).send(games.models);
     });
 });
-
 
 module.exports = app;
