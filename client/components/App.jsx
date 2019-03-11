@@ -40,7 +40,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     axios
-      .get('http://ec2-54-183-172-9.us-west-1.compute.amazonaws.com:3049/api/videos')
+      .get('/api/videos')
       .then(
         result => {
           this.setState({
@@ -48,47 +48,53 @@ class App extends React.Component {
             videos: result.data
           });
         },
-        error => {
-          console.log('Error retrieving videos: ', error);
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
+        // error => {
+        //   console.log('Error retrieving videos: ', error);
+        //   this.setState({
+        //     isLoaded: true,
+        //     error
+        //   });
+        // }
       )
       .then(() => {
-        axios.get('http://ec2-54-183-172-9.us-west-1.compute.amazonaws.com:3049/api/users').then(
+        axios.get('/api/users').then(
           result => {
             this.setState({
               isLoaded: true,
               user: result.data[0]
             });
           },
-          error => {
-            console.log('Error retrieving user: ', error);
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
+          // error => {
+          //   console.log('Error retrieving user: ', error);
+          //   this.setState({
+          //     isLoaded: true,
+          //     error
+          //   });
+          // }
         );
       })
       .then(() => {
-        axios.get('http://ec2-54-183-172-9.us-west-1.compute.amazonaws.com:3049/api/games').then(
+        axios.get('/api/games').then(
           result => {
             this.setState({
               isLoaded: true,
               games: result.data
             });
           },
-          error => {
-            console.log('Error retrieving games: ', error);
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        );
+          // error => {
+          //   console.log('Error retrieving games: ', error);
+          //   this.setState({
+          //     isLoaded: true,
+          //     error
+          //   });
+          // }
+        )
+        .catch(error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        })
       });
   }
   changeVideos(event) {
