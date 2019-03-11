@@ -47,14 +47,7 @@ class App extends React.Component {
             isLoaded: true,
             videos: result.data
           });
-        },
-        // error => {
-        //   console.log('Error retrieving videos: ', error);
-        //   this.setState({
-        //     isLoaded: true,
-        //     error
-        //   });
-        // }
+        }
       )
       .then(() => {
         axios.get('/api/users').then(
@@ -64,13 +57,6 @@ class App extends React.Component {
               user: result.data[0]
             });
           },
-          // error => {
-          //   console.log('Error retrieving user: ', error);
-          //   this.setState({
-          //     isLoaded: true,
-          //     error
-          //   });
-          // }
         );
       })
       .then(() => {
@@ -81,13 +67,6 @@ class App extends React.Component {
               games: result.data
             });
           },
-          // error => {
-          //   console.log('Error retrieving games: ', error);
-          //   this.setState({
-          //     isLoaded: true,
-          //     error
-          //   });
-          // }
         )
         .catch(error => {
           this.setState({
